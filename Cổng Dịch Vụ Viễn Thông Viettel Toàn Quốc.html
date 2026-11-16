@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viettel Telecom - Tổng Đài Lắp Đặt Internet Cáp Quang, Truyền Hình & Camera</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f6f9;
+            color: #1f2937;
+        }
+        .viettel-red {
+            background-color: #ee0033;
+        }
+        .viettel-red-text {
+            color: #ee0033;
+        }
+        .viettel-border {
+            border-color: #ee0033;
+        }
+        .viettel-gradient {
+            background: linear-gradient(135deg, #ee0033 0%, #b80027 100%);
+        }
+        .card-hover {
+            transition: all 0.25s ease-in-out;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -6px rgba(238, 0, 51, 0.18);
+        }
+        /* Hiệu ứng rung nhẹ cho nút liên hệ nổi */
+        @keyframes pulse-ring {
+            0% { transform: scale(0.85); opacity: 0.8; }
+            100% { transform: scale(1.45); opacity: 0; }
+        }
+        .animate-ring::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 9999px;
+            background-color: inherit;
+            z-index: -1;
+            animation: pulse-ring 1.6s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+        }
+        /* Tùy chỉnh thanh cuộn ngang cho tab trên mobile */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-[#ee0033] selection:text-white">
+
+    <!-- Top Bar Thông Báo -->
+    <div class="bg-gray-900 text-white text-xs sm:text-sm py-2 px-4">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-1">
+            <div class="flex items-center gap-2">
+                <span class="inline-block w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                <span>Tổng đài Đăng ký Lắp đặt Internet Cáp Quang, TV360 & Camera Viettel Toàn Quốc 24/7</span>
+            </div>
+            <div class="flex items-center gap-4 font-medium">
+                <a href="tel:0972661630" class="hover:text-red-400 transition flex items-center gap-1">
+                    <i class="fas fa-phone-alt text-red-500"></i> Hotline: <strong class="text-yellow-300">0972.661.630</strong>
+                </a>
+                <span class="hidden sm:inline text-gray-600">|</span>
+                <a href="https://zalo.me/0972661630" target="_blank" class="hover:text-blue-400 transition flex items-center gap-1">
+                    <i class="fas fa-comment-dots text-blue-400"></i> Zalo: <strong>0972.661.630</strong>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header & Menu Chuyên Sâu -->
+    <header class="bg-white shadow-md sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 sm:h-20">
+                <!-- Logo Viettel -->
+                <a href="#" class="flex items-center gap-2.5 group">
+                    <div class="w-10 h-10 rounded-xl viettel-gradient flex items-center justify-center text-white font-extrabold text-xl shadow-sm">
+                        V
+                    </div>
+                    <div>
+                        <span class="text-2xl font-extrabold tracking-tight viettel-red-text lowercase">viettel</span>
+                        <span class="block text-[10px] font-semibold text-gray-500 uppercase tracking-wider -mt-1">telecom</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center space-x-1 xl:space-x-2">
+                    <a href="#trang-chu" class="px-3 py-2 rounded-lg text-sm font-semibold text-gray-700 hover:text-[#ee0033] hover:bg-red-50 transition">
+                        <i class="fas fa-home mr-1"></i> Trang chủ
+                    </a>
+                    <a href="#uu-dai-soc" onclick="selectTabFromMenu('uu-dai-soc')" class="px-3 py-2 rounded-lg text-sm font-semibold text-gray-700 hover:text-[#ee0033] hover:bg-red-50 transition">
+                        <i class="fas fa-fire text-orange-500 mr-1"></i> Gói cước & Sản phẩm mới nhất
+                    </a>
+                    <a href="#bang-gia" onclick="selectTabFromMenu('ca-nhan')" class="px-3 py-2 rounded-lg text-sm font-semibold text-gray-700 hover:text-[#ee0033] hover:bg-red-50 transition">
+                        <i class="fas fa-wifi mr-1"></i> Internet Viettel
+                    </a>
+                    <a href="#bang-gia" onclick="selectTabFromMenu('truyen-hinh')" class="px-3 py-2 rounded-lg text-sm font-semibold text-gray-700 hover:text-[#ee0033] hover:bg-red-50 transition">
+                        <i class="fas fa-tv mr-1"></i> Truyền hình Viettel
+                    </a>
+                    <a href="#bang-gia" onclick="selectTabFromMenu('camera')" class="px-3 py-2 rounded-lg text-sm font-semibold text-gray-700 hover:text-[#ee0033] hover:bg-red-50 transition">
+                        <i class="fas fa-video mr-1"></i> Home Camera Viettel
+                    </a>
+                    <a href="#bang-gia" onclick="selectTabFromMenu('doanh-nghiep')" class="px-3 py-2 rounded-lg text-sm font-semibold text-gray-700 hover:text-[#ee0033] hover:bg-red-50 transition">
+                        <i class="fas fa-building mr-1"></i> Doanh nghiệp
+                    </a>
+                </nav>
+
+                <!-- CTA Button & Mobile Menu Toggle -->
+                <div class="flex items-center gap-2">
+                    <button onclick="openRegisterModal('Tư vấn lắp đặt tổng hợp')" class="hidden sm:inline-flex items-center gap-2 viettel-gradient hover:opacity-95 text-white text-sm font-bold px-4 py-2.5 rounded-xl shadow-md transition">
+                        <i class="fas fa-paper-plane"></i> Đăng ký nhanh
+                    </button>
+                    <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="lg:hidden p-2.5 rounded-xl text-gray-700 hover:bg-red-50 hover:text-[#ee0033] focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Navigation -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-gray-100 px-4 pt-2 pb-4 space-y-1 shadow-lg">
+            <a href="#trang-chu" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-gray-800 hover:bg-red-50 hover:text-[#ee0033]">
+                <i class="fas fa-home w-5 text-[#ee0033]"></i> Trang chủ
+            </a>
+            <a href="#bang-gia" onclick="selectTabFromMenu('uu-dai-soc'); toggleMobileMenu();" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-gray-800 hover:bg-red-50 hover:text-[#ee0033]">
+                <i class="fas fa-fire w-5 text-orange-500"></i> Gói cước & Sản phẩm mới nhất
+            </a>
+            <a href="#bang-gia" onclick="selectTabFromMenu('ca-nhan'); toggleMobileMenu();" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-gray-800 hover:bg-red-50 hover:text-[#ee0033]">
+                <i class="fas fa-wifi w-5 text-[#ee0033]"></i> Internet Viettel
+            </a>
+            <a href="#bang-gia" onclick="selectTabFromMenu('truyen-hinh'); toggleMobileMenu();" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-gray-800 hover:bg-red-50 hover:text-[#ee0033]">
+                <i class="fas fa-tv w-5 text-[#ee0033]"></i> Truyền hình Viettel
+            </a>
+            <a href="#bang-gia" onclick="selectTabFromMenu('camera'); toggleMobileMenu();" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-gray-800 hover:bg-red-50 hover:text-[#ee0033]">
+                <i class="fas fa-video w-5 text-[#ee0033]"></i> Home Camera Viettel
+            </a>
+            <a href="#bang-gia" onclick="selectTabFromMenu('doanh-nghiep'); toggleMobileMenu();" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-gray-800 hover:bg-red-50 hover:text-[#ee0033]">
+                <i class="fas fa-building w-5 text-[#ee0033]"></i> Doanh nghiệp
+            </a>
+            <div class="pt-2">
+                <button onclick="openRegisterModal('Tư vấn lắp đặt từ Mobile'); toggleMobileMenu();" class="w-full viettel-gradient text-white font-bold py-2.5 rounded-xl text-sm shadow">
+                    Đăng ký lắp đặt ngay
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section id="trang-chu" class="viettel-gradient text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/25 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold">
+                        <span class="bg-yellow-400 text-gray-900 px-2 py-0.5 rounded-full font-bold">MỚI</span>
+                        <span>Bảng Giá Cáp Quang WiFi 6 & Mesh Toàn Quốc</span>
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight">
+                        Trải nghiệm Internet <br class="hidden sm:inline">không giới hạn cùng Viettel
+                    </h1>
+                    <p class="text-base sm:text-lg text-red-100 max-w-2xl mx-auto lg:mx-0">
+                        Chỉ từ <strong class="text-yellow-300 text-2xl">195.000đ/tháng</strong> • Băng thông lên tới 1Gbps (tối thiểu 300Mbps) • Trang bị miễn phí Modem WiFi 6 2 băng tần & thiết bị kích sóng Mesh WiFi.
+                    </p>
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-3 pt-2">
+                        <a href="#bang-gia" class="bg-white text-[#ee0033] hover:bg-gray-100 font-bold px-6 py-3.5 rounded-xl shadow-lg transition flex items-center gap-2">
+                            <i class="fas fa-list-ul"></i> Xem bảng giá chi tiết
+                        </a>
+                        <a href="tel:0972661630" class="bg-gray-900/80 hover:bg-gray-900 text-white border border-white/20 font-bold px-6 py-3.5 rounded-xl shadow-lg transition flex items-center gap-2">
+                            <i class="fas fa-phone-volume text-yellow-400"></i> Gọi 0972.661.630
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Form Đăng Ký Nhanh Trên Banner -->
+                <div class="lg:col-span-5">
+                    <div class="bg-white text-gray-800 rounded-2xl p-6 shadow-2xl border border-red-100">
+                        <div class="text-center mb-4">
+                            <h3 class="text-lg sm:text-xl font-extrabold viettel-red-text uppercase">Đăng Ký Lắp Đặt Nhanh</h3>
+                            <p class="text-xs text-gray-500 mt-1">Nhân viên kỹ thuật hỗ trợ khảo sát & lắp đặt trong 24h</p>
+                        </div>
+                        <form onsubmit="handleQuickBannerSubmit(event)" class="space-y-3">
+                            <div>
+                                <input type="text" id="bannerName" required placeholder="Họ và tên quý khách *" class="w-full px-3.5 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#ee0033] focus:border-[#ee0033] outline-none">
+                            </div>
+                            <div>
+                                <input type="tel" id="bannerPhone" required placeholder="Số điện thoại liên hệ *" class="w-full px-3.5 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#ee0033] focus:border-[#ee0033] outline-none">
+                            </div>
+                            <div>
+                                <input type="text" id="bannerAddress" required placeholder="Địa chỉ lắp đặt (Tỉnh/TP, Quận/Huyện) *" class="w-full px-3.5 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#ee0033] focus:border-[#ee0033] outline-none">
+                            </div>
+                            <div>
+                                <select id="bannerService" class="w-full px-3.5 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#ee0033] focus:border-[#ee0033] outline-none bg-white">
+                                    <option value="Internet WiFi 6 Cá nhân / Gia đình (Từ 195k)">Internet WiFi 6 Cá nhân / Gia đình (Từ 195k)</option>
+                                    <option value="Combo Ưu Đãi Sốc: Internet + Camera + TV360 (Từ 225k)">Combo Ưu Đãi Sốc: Internet + Camera + TV360</option>
+                                    <option value="Combo Internet + Truyền hình TV360 (Từ 215k)">Combo Internet + Truyền hình TV360</option>
+                                    <option value="Combo Internet + Home Camera AI (Từ 215k)">Combo Internet + Home Camera AI</option>
+                                    <option value="Gói Ultra Speed 1Gbps XGSPON (Từ 320k)">Gói Ultra Speed 1Gbps XGSPON</option>
+                                    <option value="Internet Doanh Nghiệp (IP Động / IP Tĩnh)">Internet Doanh Nghiệp (IP Động / IP Tĩnh)</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="w-full viettel-gradient hover:opacity-95 text-white font-bold py-3 rounded-xl shadow-md transition uppercase text-sm tracking-wide">
+                                Nhận Tư Vấn & Ưu Đãi Ngay
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dải Ưu Đãi Nổi Bật -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-5 relative z-20">
+        <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-4 sm:p-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-xl bg-red-50 viettel-red-text flex items-center justify-center text-lg shrink-0">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm text-gray-900">Tặng 01 Tháng Cước</h4>
+                    <p class="text-xs text-gray-500">Khi đóng trước 12 tháng</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-xl bg-red-50 viettel-red-text flex items-center justify-center text-lg shrink-0">
+                    <i class="fas fa-wifi"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm text-gray-900">Trang Bị WiFi 6 Mới Nhất</h4>
+                    <p class="text-xs text-gray-500">2 băng tần 5G siêu tốc độ</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-xl bg-red-50 viettel-red-text flex items-center justify-center text-lg shrink-0">
+                    <i class="fas fa-receipt"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm text-gray-900">Giá Đã Gồm VAT 10%</h4>
+                    <p class="text-xs text-gray-500">Phí hòa mạng 300.000đ (1 lần)</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-xl bg-red-50 viettel-red-text flex items-center justify-center text-lg shrink-0">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm text-gray-900">Hỗ Trợ Kỹ Thuật 24/7</h4>
+                    <p class="text-xs text-gray-500">Lắp đặt nhanh trong ngày</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KHU VỰC BẢNG GIÁ CHÍNH -->
+    <main id="bang-gia" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <!-- Tiêu đề & Bộ lọc khu vực toàn cục -->
+        <div class="text-center max-w-3xl mx-auto mb-8">
+            <span class="text-xs font-bold uppercase tracking-wider viettel-red-text bg-red-100 px-3 py-1 rounded-full">Bảng Giá Chính Thức Toàn Quốc</span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-2">Bảng Giá Các Gói Cước Internet & Dịch Vụ Viettel</h2>
+            <p class="text-sm text-gray-600 mt-2">Chọn khu vực lắp đặt bên dưới hoặc trực tiếp trên từng gói cước để xem đơn giá chính xác nhất.</p>
+            
+            <!-- Bộ chuyển đổi khu vực nhanh cho toàn bộ bảng giá -->
+            <div class="mt-4 inline-flex items-center bg-white p-1.5 rounded-2xl shadow-sm border border-gray-200">
+                <span class="text-xs font-semibold text-gray-500 px-3"><i class="fas fa-map-marker-alt text-[#ee0033] mr-1"></i>Khu vực áp dụng:</span>
+                <button id="globalRegionProvince" onclick="setGlobalRegion('province')" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition viettel-gradient text-white shadow">
+                    Tỉnh/TP Khác & Ngoại Thành
+                </button>
+                <button id="globalRegionCity" onclick="setGlobalRegion('city')" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition text-gray-600 hover:text-[#ee0033]">
+                    HN & TP.HCM (Nội Thành)
+                </button>
+            </div>
+        </div>
+
+        <!-- Thanh Tab Danh Mục Gói Cước -->
+        <div class="flex overflow-x-auto no-scrollbar gap-2 pb-3 mb-6 justify-start md:justify-center">
+            <button onclick="switchCategory('all')" id="tab-all" class="cat-tab shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition viettel-gradient text-white border-[#ee0033] shadow-sm">
+                <i class="fas fa-th-large mr-1"></i> Tất cả gói cước
+            </button>
+            <button onclick="switchCategory('uu-dai-soc')" id="tab-uu-dai-soc" class="cat-tab shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition bg-white text-gray-700 border-gray-200 hover:border-[#ee0033]">
+                <i class="fas fa-gift text-orange-500 mr-1"></i> Combo Ưu Đãi Sốc
+            </button>
+            <button onclick="switchCategory('ca-nhan')" id="tab-ca-nhan" class="cat-tab shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition bg-white text-gray-700 border-gray-200 hover:border-[#ee0033]">
+                <i class="fas fa-wifi text-[#ee0033] mr-1"></i> Cá Nhân & Gia Đình
+            </button>
+            <button onclick="switchCategory('truyen-hinh')" id="tab-truyen-hinh" class="cat-tab shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition bg-white text-gray-700 border-gray-200 hover:border-[#ee0033]">
+                <i class="fas fa-tv text-blue-600 mr-1"></i> Truyền Hình TV360
+            </button>
+            <button onclick="switchCategory('camera')" id="tab-camera" class="cat-tab shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition bg-white text-gray-700 border-gray-200 hover:border-[#ee0033]">
+                <i class="fas fa-video text-emerald-600 mr-1"></i> Camera An Tâm
+            </button>
+            <button onclick="switchCategory('ultra-speed')" id="tab-ultra-speed" class="cat-tab shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition bg-white text-gray-700 border-gray-200 hover:border-[#ee0033]">
+                <i class="fas fa-bolt text-yellow-500 mr-1"></i> Ultra Speed 1Gbps
+            </button>
+            <button onclick="switchCategory('doanh-nghiep')" id="tab-doanh-nghiep" class="cat-tab shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition bg-white text-gray-700 border-gray-200 hover:border-[#ee0033]">
+                <i class="fas fa-building text-purple-600 mr-1"></i> Doanh Nghiệp
+            </button>
+        </div>
+
+        <!-- Container chứa các nhóm bảng giá được render bằng JS -->
+        <div id="pricingContainer" class="space-y-12"></div>
+
+        <!-- Thông tin phân chia khu vực Nội thành / Ngoại thành -->
+        <div class="mt-14 bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
+            <h3 class="text-base sm:text-lg font-extrabold text-gray-900 flex items-center gap-2 mb-4 pb-3 border-b border-gray-100">
+                <i class="fas fa-map-marked-alt viettel-red-text"></i> QUY ĐỊNH KHU VỰC ÁP DỤNG GIÁ CƯỚC
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm text-gray-600 leading-relaxed">
+                <div class="bg-blue-50/60 border border-blue-100 rounded-xl p-4">
+                    <h4 class="font-bold text-blue-800 mb-2 flex items-center gap-1.5">
+                        <i class="fas fa-globe-asia"></i> KHU VỰC TỈNH/TP KHÁC & NGOẠI THÀNH
+                    </h4>
+                    <p class="mb-2"><strong>• 61 Tỉnh/Thành phố</strong> trên toàn quốc.</p>
+                    <p class="mb-2"><strong>• Ngoại thành TP.HCM:</strong> Q.5, Q.6, Q.8, Q.9, Q.12, Bình Tân, Gò Vấp, Thủ Đức và các huyện Cần Giờ, Hóc Môn, Củ Chi, Bình Chánh, Nhà Bè.</p>
+                    <p><strong>• Ngoại thành Hà Nội:</strong> Ba Vì, Chương Mỹ, Đan Phượng, Đông Anh, Gia Lâm, Hoài Đức, Mê Linh, Mỹ Đức, Phúc Thọ, Phú Xuyên, Quốc Oai, Sóc Sơn, Thạch Thất, Thanh Oai, Thanh Trì, Thường Tín, Ứng Hòa, TX. Sơn Tây.</p>
+                </div>
+                <div class="bg-red-50/60 border border-red-100 rounded-xl p-4">
+                    <h4 class="font-bold viettel-red-text mb-2 flex items-center gap-1.5">
+                        <i class="fas fa-city"></i> KHU VỰC NỘI THÀNH HN & TP.HCM
+                    </h4>
+                    <p class="mb-2"><strong>• Nội thành TP.HCM:</strong> Q.1, Q.2, Q.3, Q.4, Q.7, Q.10, Q.11, Tân Bình, Tân Phú, Bình Thạnh, Phú Nhuận.</p>
+                    <p><strong>• Nội thành Hà Nội:</strong> Ba Đình, Bắc Từ Liêm, Cầu Giấy, Đống Đa, Hà Đông, Hai Bà Trưng, Hoàn Kiếm, Hoàng Mai, Long Biên, Nam Từ Liêm, Tây Hồ, Thanh Xuân.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 pt-12 pb-24 sm:pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-gray-800">
+                <div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-8 h-8 rounded-lg viettel-gradient flex items-center justify-center text-white font-extrabold">V</div>
+                        <span class="text-xl font-extrabold text-white lowercase">viettel <span class="text-xs uppercase font-semibold text-red-400">telecom</span></span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-gray-400 leading-relaxed">
+                        Cổng đăng ký dịch vụ Internet Cáp Quang WiFi 6, Truyền hình số TV360, Home Camera AI và Giải pháp Doanh nghiệp Viettel trực tuyến toàn quốc.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-3">Danh Mục Dịch Vụ</h4>
+                    <ul class="space-y-2 text-xs sm:text-sm">
+                        <li><a href="#bang-gia" onclick="switchCategory('uu-dai-soc')" class="hover:text-white transition">• Combo Ưu Đãi Sốc (Net + Cam + TV)</a></li>
+                        <li><a href="#bang-gia" onclick="switchCategory('ca-nhan')" class="hover:text-white transition">• Internet WiFi 6 & Home Mesh</a></li>
+                        <li><a href="#bang-gia" onclick="switchCategory('truyen-hinh')" class="hover:text-white transition">• Combo Truyền hình giải trí TV360</a></li>
+                        <li><a href="#bang-gia" onclick="switchCategory('camera')" class="hover:text-white transition">• Combo Home Camera AI an tâm</a></li>
+                        <li><a href="#bang-gia" onclick="switchCategory('doanh-nghiep')" class="hover:text-white transition">• Cáp quang Doanh nghiệp IP Tĩnh</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-3">Thông Tin Liên Hệ & Tiếp Nhận</h4>
+                    <ul class="space-y-2.5 text-xs sm:text-sm">
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-phone-alt text-red-500 w-4"></i>
+                            <span>Hotline 24/7: <a href="tel:0972661630" class="text-white font-bold hover:underline">0972.661.630</a></span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-comment-dots text-blue-400 w-4"></i>
+                            <span>Zalo Tư Vấn: <a href="https://zalo.me/0972661630" target="_blank" class="text-white font-bold hover:underline">0972.661.630</a></span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-envelope text-yellow-400 w-4"></i>
+                            <span>Email đăng ký: <a href="mailto:tranthinhuquynh0510@gmail.com" class="text-white font-medium hover:underline break-all">tranthinhuquynh0510@gmail.com</a></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-6 text-center text-xs text-gray-500">
+                <p>&copy; 2026 Viettel Telecom - Hệ thống đăng ký lắp đặt Internet & Truyền hình trực tuyến.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Nút Liên Hệ Nổi Cố Định (Hotline & Zalo 0972661630) -->
+    <div class="fixed bottom-5 right-4 sm:right-6 z-40 flex flex-col gap-3 items-end">
+        <!-- Nút Chat Zalo -->
+        <a href="https://zalo.me/0972661630" target="_blank" title="Chat Zalo 0972661630" class="relative group flex items-center gap-2 bg-[#0068ff] hover:bg-blue-700 text-white px-3.5 py-2.5 rounded-full shadow-xl transition">
+            <span class="font-extrabold text-xs tracking-tight bg-white text-[#0068ff] px-1.5 py-0.5 rounded-md">Zalo</span>
+            <span class="text-xs sm:text-sm font-bold pr-1">0972.661.630</span>
+        </a>
+        <!-- Nút Gọi Hotline -->
+        <a href="tel:0972661630" title="Gọi ngay 0972661630" class="relative animate-ring flex items-center gap-2 viettel-gradient text-white px-4 py-3 rounded-full shadow-2xl transition">
+            <i class="fas fa-phone-alt text-base"></i>
+            <span class="text-xs sm:text-sm font-extrabold">Gọi: 0972.661.630</span>
+        </a>
+    </div>
+
+    <!-- Modal Popup Form Đăng Ký Dịch Vụ -->
+    <div id="registerModal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-xs items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full overflow-hidden shadow-2xl transform transition-all">
+            <div class="viettel-gradient px-6 py-4 flex justify-between items-center text-white">
+                <div>
+                    <h3 class="text-lg font-extrabold">Đăng Ký Lắp Đặt Viettel</h3>
+                    <p class="text-xs text-red-100">Gửi yêu cầu trực tiếp tới chuyên viên tư vấn</p>
+                </div>
+                <button onclick="closeRegisterModal()" class="text-white/80 hover:text-white text-2xl leading-none">&times;</button>
+            </div>
+            
+            <form id="modalRegisterForm" onsubmit="submitRegistrationForm(event)" class="p-6 space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Gói cước đã chọn</label>
+                    <input type="text" id="modalPackageInput" readonly class="w-full px-3.5 py-2.5 text-sm font-bold viettel-red-text bg-red-50 border border-red-200 rounded-xl outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Họ và tên khách hàng *</label>
+                    <input type="text" id="modalCustomerName" required placeholder="Ví dụ: Nguyễn Văn A" class="w-full px-3.5 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#ee0033] focus:border-[#ee0033] outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Số điện thoại liên hệ *</label>
+                    <input type="tel" id="modalCustomerPhone" required placeholder="Nhập số điện thoại của bạn" class="w-full px-3.5 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#ee0033] focus:border-[#ee0033] outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Địa chỉ lắp đặt chi tiết *</label>
+                    <input type="text" id="modalCustomerAddress" required placeholder="Số nhà, đường, phường/xã, quận/huyện, tỉnh/TP..." class="w-full px-3.5 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#ee0033] focus:border-[#ee0033] outline-none">
+                </div>
+                <div class="pt-2 flex gap-2">
+                    <button type="button" onclick="closeRegisterModal()" class="w-1/3 py-3 rounded-xl border border-gray-300 text-gray-700 font-bold text-sm hover:bg-gray-50 transition">
+                        Đóng
+                    </button>
+                    <button type="submit" class="w-2/3 py-3 rounded-xl viettel-gradient text-white font-bold text-sm shadow-lg hover:opacity-95 transition flex items-center justify-center gap-2">
+                        <i class="fas fa-paper-plane"></i> Gửi Đăng Ký Ngay
+                    </button>
+                </div>
+                <p class="text-[11px] text-center text-gray-500">
+                    Hoặc liên hệ trực tiếp Hotline/Zalo: <strong class="text-gray-800">0972.661.630</strong>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Hộp Thông Báo Xác Nhận (Thay thế alert()) -->
+    <div id="toastNotification" class="fixed top-20 right-4 z-50 hidden max-w-sm bg-white border-l-4 border-green-500 rounded-xl shadow-2xl p-4 transition-all">
+        <div class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center shrink-0 mt-0.5">
+                <i class="fas fa-check"></i>
+            </div>
+            <div class="flex-1">
+                <h4 class="text-sm font-bold text-gray-900">Đã tạo đơn đăng ký thành công!</h4>
+                <p id="toastMessage" class="text-xs text-gray-600 mt-1 leading-relaxed"></p>
+                <div class="mt-2 flex gap-2">
+                    <a href="https://zalo.me/0972661630" target="_blank" class="text-xs font-bold text-blue-600 hover:underline">Chat Zalo 0972661630 &rarr;</a>
+                </div>
+            </div>
+            <button onclick="hideToast()" class="text-gray-400 hover:text-gray-600 text-lg leading-none">&times;</button>
+        </div>
+    </div>
+
+    <!-- JavaScript Dữ Liệu Bảng Giá & Xử Lý Tương Tác -->
+    <script>
+        // Cấu hình thông tin liên hệ
+        const CONTACT_PHONE = "0972661630";
+        const TARGET_EMAIL = "tranthinhuquynh0510@gmail.com";
+
+        // Trạng thái khu vực mặc định ('province' = Tỉnh/TP khác, 'city' = HN & TP.HCM)
+        let currentGlobalRegion = 'province';
+        let currentCategory = 'all';
+
+        // Dữ liệu đầy đủ tất cả gói cước theo yêu cầu
+        const pricingData = [
+            {
+                id: 'uu-dai-soc',
+                title: 'Gói Cước Ưu Đãi Sốc (Combo All-in-One)',
+                subtitle: 'Trọn gói Internet WiFi 6 + Home Camera AI + Truyền hình TV360 siêu tiết kiệm',
+                badge: 'HOT NHẤT',
+                hasRegionSelector: true,
+                packages: [
+                    {
+                        code: 'NETVTO1',
+                        speed: '300 Mbps',
+                        tag: 'Ưu đãi sốc',
+                        priceProvince: 225000,
+                        priceCity: 260000,
+                        features: [
+                            'Trang bị 01 Modem WiFi 6 2 băng tần',
+                            'Tặng kèm 01 Home Camera AI',
+                            'Tích hợp Truyền hình giải trí TV360'
+                        ]
+                    },
+                    {
+                        code: 'MESHVTO1',
+                        speed: '300 Mbps',
+                        tag: 'Nhà nhiều tầng',
+                        priceProvince: 240000,
+                        priceCity: 280000,
+                        features: [
+                            'Trang bị 01 Modem WiFi 6 + 01 Mesh WiFi',
+                            'Tặng kèm 01 Home Camera AI',
+                            'Tích hợp Truyền hình giải trí TV360'
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'ca-nhan',
+                title: 'Gói Cước Cá Nhân & Gia Đình (WiFi 6 & Home Mesh)',
+                subtitle: 'Kết nối mượt mà, phủ sóng xuyên tường mạnh mẽ cho căn hộ và nhà nhiều tầng',
+                badge: 'PHỔ BIẾN',
+                hasRegionSelector: true,
+                packages: [
+                    {
+                        code: 'NETVT1',
+                        speed: '300 Mbps',
+                        tag: 'Tiết kiệm',
+                        priceProvince: 195000,
+                        priceCity: 235000,
+                        features: [
+                            'Trang bị 01 Modem WiFi 6 hiện đại',
+                            'Phù hợp 2 - 3 người sử dụng',
+                            'Căn hộ 1PN / Nhà 1 tầng'
+                        ]
+                    },
+                    {
+                        code: 'NETVT2',
+                        speed: '500 Mbps',
+                        tag: 'Phổ biến',
+                        priceProvince: 240000,
+                        priceCity: 265000,
+                        features: [
+                            'Trang bị 01 Modem WiFi 6 tốc độ cao',
+                            'Phù hợp 3 - 5 người sử dụng',
+                            'Chung cư 1 - 2PN / Nhà 1 tầng'
+                        ]
+                    },
+                    {
+                        code: 'MESHVT1',
+                        speed: '300 Mbps',
+                        tag: 'Mesh WiFi',
+                        priceProvince: 210000,
+                        priceCity: 255000,
+                        features: [
+                            '01 Modem WiFi 6 + 01 Mesh WiFi',
+                            'Phù hợp 3 - 4 người sử dụng',
+                            'Nhà 2 tầng / Căn hộ 1 - 2PN'
+                        ]
+                    },
+                    {
+                        code: 'MESHVT2',
+                        speed: '500 Mbps',
+                        tag: 'Bán chạy',
+                        priceProvince: 245000,
+                        priceCity: 289000,
+                        features: [
+                            '01 Modem WiFi 6 + 02 Mesh WiFi',
+                            'Phù hợp 5 - 6 người sử dụng',
+                            'Nhà 3 tầng / Căn hộ 2 - 3PN'
+                        ]
+                    },
+                    {
+                        code: 'MESHVT3',
+                        speed: '500 Mbps',
+                        tag: 'Toàn diện',
+                        priceProvince: 299000,
+                        priceCity: 359000,
+                        features: [
+                            '01 Modem WiFi 6 + 03 Mesh WiFi',
+                            'Kèm Truyền hình TV360 đa nền tảng',
+                            'Biệt thự 4 - 5 tầng / 7+ người dùng'
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'truyen-hinh',
+                title: 'Gói Cước Truyền Hình Giải Trí Đa Nền Tảng (Internet + TV360)',
+                subtitle: 'Hơn 150 kênh truyền hình HD đặc sắc, kho phim bom tấn & thể thao đỉnh cao',
+                badge: 'TV360',
+                hasRegionSelector: true,
+                packages: [
+                    {
+                        code: 'NETVT1_GIAITRI',
+                        speed: '300 Mbps',
+                        tag: 'Combo TV',
+                        priceProvince: 215000,
+                        priceCity: 255000,
+                        features: [
+                            '01 Modem WiFi 6 tốc độ 300 Mbps',
+                            'Truyền hình TV360 (hơn 150 kênh)',
+                            'Xem mượt trên SmartTV & Smartphone'
+                        ]
+                    },
+                    {
+                        code: 'NETVT2_GIAITRI',
+                        speed: '500 Mbps',
+                        tag: 'Tốc độ cao',
+                        priceProvince: 260000,
+                        priceCity: 290000,
+                        features: [
+                            '01 Modem WiFi 6 tốc độ 500 Mbps',
+                            'Truyền hình TV360 chất lượng 4K',
+                            'Không giật lag khi xem bóng đá'
+                        ]
+                    },
+                    {
+                        code: 'MESHVT1_GIAITRI',
+                        speed: '300 Mbps',
+                        tag: 'Combo Mesh TV',
+                        priceProvince: 230000,
+                        priceCity: 280000,
+                        features: [
+                            '01 Modem WiFi 6 + 01 Mesh WiFi',
+                            'Truyền hình TV360 đa nền tảng',
+                            'Phủ sóng rộng khắp nhà nhiều phòng'
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'camera',
+                title: 'Gói Cước Camera Gia Đình An Tâm (Internet + Camera AI)',
+                subtitle: 'Giám sát an ninh thông minh 24/7, đàm thoại 2 chiều, lưu trữ Cloud bảo mật Viettel',
+                badge: 'CAMERA AI',
+                hasRegionSelector: true,
+                packages: [
+                    {
+                        code: 'NETVT1_CAM1',
+                        speed: '350 Mbps',
+                        tag: 'An tâm',
+                        priceProvince: 215000,
+                        priceCity: 255000,
+                        features: [
+                            '01 Modem WiFi 6 tốc độ 350 Mbps',
+                            'Trang bị 01 Home Camera AI Viettel',
+                            'Cảnh báo chuyển động thông minh'
+                        ]
+                    },
+                    {
+                        code: 'NETVT2_CAM1',
+                        speed: '500 Mbps',
+                        tag: 'Phổ biến',
+                        priceProvince: 260000,
+                        priceCity: 285000,
+                        features: [
+                            '01 Modem WiFi 6 tốc độ 500 Mbps',
+                            'Trang bị 01 Home Camera AI Viettel',
+                            'Hình ảnh sắc nét Full HD ngày & đêm'
+                        ]
+                    },
+                    {
+                        code: 'MESHVT1_CAM1',
+                        speed: '350 Mbps',
+                        tag: 'Mesh + Cam',
+                        priceProvince: 230000,
+                        priceCity: 275000,
+                        features: [
+                            '01 Modem WiFi 6 + 01 Mesh WiFi',
+                            'Trang bị 01 Home Camera AI Viettel',
+                            'Kết nối camera ổn định mọi góc nhà'
+                        ]
+                    },
+                    {
+                        code: 'MESHVT2_CAM1',
+                        speed: '500 Mbps',
+                        tag: 'Cao cấp',
+                        priceProvince: 265000,
+                        priceCity: 309000,
+                        features: [
+                            '01 Modem WiFi 6 + 02 Mesh WiFi',
+                            'Trang bị 01 Home Camera AI Viettel',
+                            'Phù hợp nhà 3 tầng có sân cổng'
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'ultra-speed',
+                title: 'Gói Cước Ultra Speed (1 Gbps Công Nghệ XGSPON)',
+                subtitle: 'Bứt phá giới hạn tốc độ 1Gbps đối xứng, tối ưu cho Streamer, Gamer & Văn phòng hiện đại',
+                badge: '1 GBPS',
+                hasRegionSelector: false,
+                packages: [
+                    {
+                        code: 'GIGA1',
+                        speed: '1 Gbps',
+                        tag: 'XGSPON',
+                        fixedPrice: 320000,
+                        features: [
+                            '01 Modem WiFi 6 công nghệ XGSPON',
+                            'Băng thông lên tới 1.000 Mbps',
+                            'Độ trễ cực thấp cho Gaming & Livestream'
+                        ]
+                    },
+                    {
+                        code: 'GIGA2',
+                        speed: '1 Gbps',
+                        tag: '+1 Mesh',
+                        fixedPrice: 355000,
+                        features: [
+                            '01 Modem WiFi 6 XGSPON + 01 Mesh WiFi',
+                            'Băng thông siêu tốc 1 Gbps',
+                            'Chịu tải đồng thời hàng chục thiết bị'
+                        ]
+                    },
+                    {
+                        code: 'GIGA3',
+                        speed: '1 Gbps',
+                        tag: '+2 Mesh',
+                        fixedPrice: 390000,
+                        features: [
+                            '01 Modem WiFi 6 XGSPON + 02 Mesh WiFi',
+                            'Phủ sóng tốc độ 1 Gbps toàn căn nhà',
+                            'Tối ưu làm việc từ xa & truyền tải dữ liệu lớn'
+                        ]
+                    },
+                    {
+                        code: 'GIGA4',
+                        speed: '1 Gbps',
+                        tag: '+3 Mesh',
+                        fixedPrice: 425000,
+                        features: [
+                            '01 Modem WiFi 6 XGSPON + 03 Mesh WiFi',
+                            'Giải pháp WiFi 1 Gbps cho biệt thự lớn',
+                            'Hỗ trợ kỹ thuật ưu tiên 24/7'
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'doanh-nghiep',
+                title: 'Gói Cước Doanh Nghiệp (IP Động & IP Tĩnh Cam Kết Quốc Tế)',
+                subtitle: 'Đường truyền cáp quang chuyên biệt cho công ty, quán game, nhà hàng, tập đoàn lớn',
+                badge: 'DOANH NGHIỆP',
+                hasRegionSelector: false,
+                packages: [
+                    // Nhóm IP Động
+                    {
+                        code: 'PRO1',
+                        speed: '400 - 1000 Mbps',
+                        tag: 'DN Vừa & Nhỏ • IP Động',
+                        fixedPrice: 350000,
+                        features: [
+                            'Trong nước: 400 - 1000 Mbps | Quốc tế: 2 Mbps',
+                            'Trang bị Modem WiFi 6 chuyên dụng',
+                            'Tiết kiệm năng lượng 30%'
+                        ]
+                    },
+                    {
+                        code: 'MESHPRO1',
+                        speed: '400 - 1000 Mbps',
+                        tag: 'DN Vừa & Nhỏ • +1 Mesh',
+                        fixedPrice: 400000,
+                        features: [
+                            'Trong nước: 400 - 1000 Mbps | Quốc tế: 2 Mbps',
+                            'Kèm 01 thiết bị Home WiFi 6 Mesh',
+                            'Phủ sóng rộng cho văn phòng mở'
+                        ]
+                    },
+                    {
+                        code: 'PRO2',
+                        speed: '500 - 1000 Mbps',
+                        tag: 'DN Vừa & Nhỏ • IP Động',
+                        fixedPrice: 500000,
+                        features: [
+                            'Trong nước: 500 - 1000 Mbps | Quốc tế: 5 Mbps',
+                            'Cam kết băng thông quốc tế tối thiểu',
+                            'Phù hợp văn phòng 15 - 30 nhân sự'
+                        ]
+                    },
+                    {
+                        code: 'MESHPRO2',
+                        speed: '500 - 1000 Mbps',
+                        tag: 'DN Vừa & Nhỏ • +2 Mesh',
+                        fixedPrice: 600000,
+                        features: [
+                            'Trong nước: 500 - 1000 Mbps | Quốc tế: 5 Mbps',
+                            'Kèm 02 thiết bị Home WiFi 6 Mesh',
+                            'Kết nối ổn định nhiều phòng ban'
+                        ]
+                    },
+                    // Nhóm VIP & F-Series IP Tĩnh
+                    {
+                        code: 'VIP200',
+                        speed: '200 Mbps',
+                        tag: 'IP Tĩnh • VIP',
+                        fixedPrice: 800000,
+                        features: [
+                            'Trong nước: 200 Mbps | Quốc tế: 5 Mbps',
+                            'Miễn phí 01 địa chỉ IP Tĩnh',
+                            'Kết nối 60 - 100 thiết bị đồng thời'
+                        ]
+                    },
+                    {
+                        code: 'F200N',
+                        speed: '300 Mbps',
+                        tag: 'IP Tĩnh • F-Series',
+                        fixedPrice: 1100000,
+                        features: [
+                            'Trong nước: 300 Mbps | Quốc tế: 4 Mbps',
+                            'Cấp miễn phí 01 IP Tĩnh',
+                            'Đường truyền ổn định cho Server nội bộ'
+                        ]
+                    },
+                    {
+                        code: 'VIP500',
+                        speed: '500 Mbps',
+                        tag: 'IP Tĩnh • VIP',
+                        fixedPrice: 1900000,
+                        features: [
+                            'Trong nước: 500 Mbps | Quốc tế: 10 Mbps',
+                            'Miễn phí 01 địa chỉ IP Tĩnh',
+                            'Cam kết tốc độ quốc tế cao'
+                        ]
+                    },
+                    {
+                        code: 'F200Plus',
+                        speed: '300 Mbps',
+                        tag: 'IP Tĩnh • F-Series',
+                        fixedPrice: 4400000,
+                        features: [
+                            'Trong nước: 300 Mbps | Quốc tế: 12 Mbps',
+                            'Cấp miễn phí IP Tĩnh chuyên dụng',
+                            'Tối ưu giao dịch quốc tế liên tục'
+                        ]
+                    },
+                    {
+                        code: 'VIP600',
+                        speed: '600 Mbps',
+                        tag: 'IP Tĩnh • VIP',
+                        fixedPrice: 6600000,
+                        features: [
+                            'Trong nước: 600 Mbps | Quốc tế: 30 Mbps',
+                            'Cấp miễn phí IP Tĩnh tốc độ cao',
+                            'Hỗ trợ kỹ thuật doanh nghiệp 24/7'
+                        ]
+                    },
+                    {
+                        code: 'F300Basic',
+                        speed: '500 Mbps',
+                        tag: 'IP Tĩnh • F-Series',
+                        fixedPrice: 7700000,
+                        features: [
+                            'Trong nước: 500 Mbps | Quốc tế: 22 Mbps',
+                            'Cấp miễn phí IP Tĩnh',
+                            'Dành cho doanh nghiệp quy mô lớn'
+                        ]
+                    },
+                    {
+                        code: 'F300Plus',
+                        speed: '500 Mbps',
+                        tag: 'IP Tĩnh • F-Series',
+                        fixedPrice: 9900000,
+                        features: [
+                            'Trong nước: 500 Mbps | Quốc tế: 30 Mbps',
+                            'Cấp miễn phí IP Tĩnh',
+                            'Độ ổn định vượt trội, SLA cao'
+                        ]
+                    },
+                    {
+                        code: 'F500Basic',
+                        speed: '600 Mbps',
+                        tag: 'IP Tĩnh • F-Series',
+                        fixedPrice: 13200000,
+                        features: [
+                            'Trong nước: 600 Mbps | Quốc tế: 40 Mbps',
+                            'Cấp miễn phí Block IP Tĩnh',
+                            'Phục vụ tòa nhà, khu công nghiệp'
+                        ]
+                    },
+                    {
+                        code: 'F500Plus',
+                        speed: '600 Mbps',
+                        tag: 'IP Tĩnh • F-Series',
+                        fixedPrice: 17600000,
+                        features: [
+                            'Trong nước: 600 Mbps | Quốc tế: 50 Mbps',
+                            'Cấp miễn phí Block IP Tĩnh',
+                            'Băng thông quốc tế cực lớn'
+                        ]
+                    },
+                    {
+                        code: 'F1000Plus',
+                        speed: '1000 Mbps (1 Gbps)',
+                        tag: 'FLAGSHIP • IP Tĩnh',
+                        fixedPrice: 25000000,
+                        features: [
+                            'Trong nước: 1.000 Mbps | Quốc tế: 100 Mbps',
+                            'Kết nối tối đa 100+ thiết bị đồng thời',
+                            'Gói Flagship cao cấp nhất cho Tập đoàn'
+                        ]
+                    }
+                ]
+            }
+        ];
+
+        // Định dạng tiền tệ VNĐ
+        function formatCurrency(amount) {
+            return amount.toLocaleString('vi-VN') + 'đ';
+        }
+
+        // Render bảng giá ra giao diện
+        function renderPricing() {
+            const container = document.getElementById('pricingContainer');
+            container.innerHTML = '';
+
+            const filteredCategories = currentCategory === 'all'
+                ? pricingData
+                : pricingData.filter(cat => cat.id === currentCategory);
+
+            filteredCategories.forEach(category => {
+                const section = document.createElement('section');
+                section.id = category.id;
+                section.className = 'scroll-mt-24';
+
+                // Header của nhóm gói cước
+                let html = `
+                    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 mb-5 pb-3 border-b-2 border-[#ee0033]">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="bg-[#ee0033] text-white text-[10px] font-extrabold px-2.5 py-0.5 rounded-md uppercase">${category.badge}</span>
+                                <h3 class="text-lg sm:text-xl font-extrabold text-gray-900">${category.title}</h3>
+                            </div>
+                            <p class="text-xs sm:text-sm text-gray-500 mt-1">${category.subtitle}</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+                `;
+
+                category.packages.forEach((pkg, idx) => {
+                    const uniqueKey = `${category.id}_${idx}`;
+                    const isCity = currentGlobalRegion === 'city';
+                    const activePrice = category.hasRegionSelector
+                        ? (isCity ? pkg.priceCity : pkg.priceProvince)
+                        : pkg.fixedPrice;
+                    const regionLabel = category.hasRegionSelector
+                        ? (isCity ? 'HN & TP.HCM' : 'Tỉnh/TP Khác')
+                        : 'Toàn quốc';
+
+                    html += `
+                        <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm card-hover flex flex-col justify-between relative">
+                            <div>
+                                <!-- Card Header -->
+                                <div class="viettel-gradient px-4 py-3.5 text-white relative">
+                                    <div class="flex justify-between items-start gap-2">
+                                        <div>
+                                            <span class="inline-block text-[10px] font-bold uppercase tracking-wider bg-black/25 px-2 py-0.5 rounded-md mb-1">${pkg.tag}</span>
+                                            <h4 class="text-lg font-extrabold tracking-tight">${pkg.code}</h4>
+                                        </div>
+                                        <span class="bg-white text-[#ee0033] text-xs font-extrabold px-2.5 py-1 rounded-lg shadow-xs shrink-0">
+                                            ${pkg.speed}
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <!-- Card Body -->
+                                <div class="p-4">
+                                    <ul class="space-y-2 text-xs text-gray-600 mb-4 min-h-[76px]">
+                                        ${pkg.features.map(f => `
+                                            <li class="flex items-start gap-2">
+                                                <i class="fas fa-check-circle text-green-500 mt-0.5 shrink-0"></i>
+                                                <span>${f}</span>
+                                            </li>
+                                        `).join('')}
+                                    </ul>
+
+                                    ${category.hasRegionSelector ? `
+                                        <!-- Bộ chọn khu vực trực tiếp trên từng gói cước -->
+                                        <div class="bg-gray-50 border border-gray-200 rounded-xl p-2.5 mb-3">
+                                            <span class="block text-[11px] font-semibold text-gray-500 mb-1.5">Khu vực lắp đặt:</span>
+                                            <div class="grid grid-cols-2 gap-1.5 text-[11px] font-bold">
+                                                <label class="flex items-center gap-1.5 cursor-pointer p-1.5 rounded-lg border ${!isCity ? 'bg-red-50 border-[#ee0033] text-[#ee0033]' : 'bg-white border-gray-200 text-gray-600'}" id="lbl_prov_${uniqueKey}">
+                                                    <input type="radio" name="reg_${uniqueKey}" value="province" ${!isCity ? 'checked' : ''} onchange="updateCardRegion('${uniqueKey}', 'province', ${pkg.priceProvince}, ${pkg.priceCity}, '${pkg.code}', '${pkg.speed}')" class="accent-[#ee0033]">
+                                                    <span>Tỉnh/TP khác</span>
+                                                </label>
+                                                <label class="flex items-center gap-1.5 cursor-pointer p-1.5 rounded-lg border ${isCity ? 'bg-red-50 border-[#ee0033] text-[#ee0033]' : 'bg-white border-gray-200 text-gray-600'}" id="lbl_city_${uniqueKey}">
+                                                    <input type="radio" name="reg_${uniqueKey}" value="city" ${isCity ? 'checked' : ''} onchange="updateCardRegion('${uniqueKey}', 'city', ${pkg.priceProvince}, ${pkg.priceCity}, '${pkg.code}', '${pkg.speed}')" class="accent-[#ee0033]">
+                                                    <span>HN & TP.HCM</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    ` : `
+                                        <div class="bg-gray-50 border border-gray-200 rounded-xl p-2.5 mb-3 text-center">
+                                            <span class="text-[11px] font-semibold text-gray-600"><i class="fas fa-globe text-[#ee0033] mr-1"></i>Áp dụng đồng giá toàn quốc</span>
+                                        </div>
+                                    `}
+                                </div>
+                            </div>
+
+                            <!-- Card Footer Giá & Nút Đăng Ký -->
+                            <div class="px-4 pb-4 pt-1">
+                                <div class="bg-red-50/70 border border-dashed border-red-200 rounded-xl p-2.5 text-center mb-3">
+                                    <span class="block text-[11px] text-gray-500">Đơn giá trọn gói (Đã gồm VAT):</span>
+                                    <div class="mt-0.5">
+                                        <span id="price_${uniqueKey}" class="text-xl font-extrabold viettel-red-text">${formatCurrency(activePrice)}</span>
+                                        <span class="text-xs font-medium text-gray-500">/tháng</span>
+                                    </div>
+                                </div>
+                                <button id="btn_${uniqueKey}" onclick="openRegisterModal('${pkg.code} (${pkg.speed}) - Khu vực: ${regionLabel} - Giá: ${formatCurrency(activePrice)}/tháng')" class="w-full viettel-gradient hover:opacity-95 text-white font-bold py-2.5 px-4 rounded-xl text-xs sm:text-sm shadow-sm transition flex items-center justify-center gap-1.5">
+                                    <span>Đăng ký ngay</span>
+                                    <i class="fas fa-chevron-right text-[10px]"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `</div>`;
+                section.innerHTML = html;
+                container.appendChild(section);
+            });
+        }
+
+        // Cập nhật giá khi chọn radio khu vực trên từng thẻ gói cước
+        function updateCardRegion(uniqueKey, region, priceProvince, priceCity, code, speed) {
+            const isCity = region === 'city';
+            const selectedPrice = isCity ? priceCity : priceProvince;
+            const regionText = isCity ? 'HN & TP.HCM' : 'Tỉnh/TP Khác';
+
+            // Cập nhật hiển thị giá
+            const priceEl = document.getElementById(`price_${uniqueKey}`);
+            if (priceEl) {
+                priceEl.innerText = formatCurrency(selectedPrice);
+            }
+
+            // Cập nhật style nhãn radio
+            const lblProv = document.getElementById(`lbl_prov_${uniqueKey}`);
+            const lblCity = document.getElementById(`lbl_city_${uniqueKey}`);
+            if (lblProv && lblCity) {
+                if (isCity) {
+                    lblCity.className = 'flex items-center gap-1.5 cursor-pointer p-1.5 rounded-lg border bg-red-50 border-[#ee0033] text-[#ee0033]';
+                    lblProv.className = 'flex items-center gap-1.5 cursor-pointer p-1.5 rounded-lg border bg-white border-gray-200 text-gray-600';
+                } else {
+                    lblProv.className = 'flex items-center gap-1.5 cursor-pointer p-1.5 rounded-lg border bg-red-50 border-[#ee0033] text-[#ee0033]';
+                    lblCity.className = 'flex items-center gap-1.5 cursor-pointer p-1.5 rounded-lg border bg-white border-gray-200 text-gray-600';
+                }
+            }
+
+            // Cập nhật tham số nút Đăng ký
+            const btnEl = document.getElementById(`btn_${uniqueKey}`);
+            if (btnEl) {
+                const newLabel = `${code} (${speed}) - Khu vực: ${regionText} - Giá: ${formatCurrency(selectedPrice)}/tháng`;
+                btnEl.setAttribute('onclick', `openRegisterModal('${newLabel}')`);
+            }
+        }
+
+        // Chuyển đổi khu vực toàn cục
+        function setGlobalRegion(region) {
+            currentGlobalRegion = region;
+            const btnProv = document.getElementById('globalRegionProvince');
+            const btnCity = document.getElementById('globalRegionCity');
+
+            if (region === 'province') {
+                btnProv.className = 'px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition viettel-gradient text-white shadow';
+                btnCity.className = 'px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition text-gray-600 hover:text-[#ee0033]';
+            } else {
+                btnCity.className = 'px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition viettel-gradient text-white shadow';
+                btnProv.className = 'px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition text-gray-600 hover:text-[#ee0033]';
+            }
+            renderPricing();
+        }
+
+        // Chuyển đổi danh mục tab
+        function switchCategory(catId) {
+            currentCategory = catId;
+            document.querySelectorAll('.cat-tab').forEach(btn => {
+                btn.className = 'cat-tab shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition bg-white text-gray-700 border-gray-200 hover:border-[#ee0033]';
+            });
+            const activeTab = document.getElementById(`tab-${catId}`);
+            if (activeTab) {
+                activeTab.className = 'cat-tab shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition viettel-gradient text-white border-[#ee0033] shadow-sm';
+            }
+            renderPricing();
+        }
+
+        // Chọn tab từ thanh menu trên cùng
+        function selectTabFromMenu(catId) {
+            switchCategory(catId);
+        }
+
+        // Bật/tắt menu mobile
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Mở Modal đăng ký
+        function openRegisterModal(packageInfo) {
+            document.getElementById('modalPackageInput').value = packageInfo;
+            const modal = document.getElementById('registerModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        // Đóng Modal đăng ký
+        function closeRegisterModal() {
+            const modal = document.getElementById('registerModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Hiển thị thông báo xác nhận (không dùng alert)
+        function showToast(message) {
+            const toast = document.getElementById('toastNotification');
+            document.getElementById('toastMessage').innerText = message;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                hideToast();
+            }, 8000);
+        }
+
+        function hideToast() {
+            document.getElementById('toastNotification').classList.add('hidden');
+        }
+
+        // Gửi email đăng ký về tranthinhuquynh0510@gmail.com
+        function triggerMailtoRegistration(pkg, name, phone, address) {
+            const subject = encodeURIComponent(`[Đăng Ký Viettel] ${pkg} - KH: ${name}`);
+            const body = encodeURIComponent(
+                `THÔNG TIN KHÁCH HÀNG ĐĂNG KÝ DỊCH VỤ VIETTEL\n` +
+                `--------------------------------------------------\n` +
+                `• Gói cước đăng ký: ${pkg}\n` +
+                `• Họ và tên khách hàng: ${name}\n` +
+                `• Số điện thoại liên hệ: ${phone}\n` +
+                `• Địa chỉ lắp đặt: ${address}\n` +
+                `--------------------------------------------------\n` +
+                `Gửi từ cổng đăng ký trực tuyến Viettel Telecom.`
+            );
+
+            // Kích hoạt ứng dụng gửi mail mặc định tới tranthinhuquynh0510@gmail.com
+            window.location.href = `mailto:${TARGET_EMAIL}?subject=${subject}&body=${body}`;
+
+            // Hiển thị thông báo xác nhận trên giao diện
+            showToast(`Hệ thống đang mở ứng dụng Email để gửi thông tin gói "${pkg}" tới ${TARGET_EMAIL}. Bạn cũng có thể gọi/nhắn Zalo ${CONTACT_PHONE} để được lắp đặt ngay!`);
+        }
+
+        // Xử lý submit từ Modal
+        function submitRegistrationForm(e) {
+            e.preventDefault();
+            const pkg = document.getElementById('modalPackageInput').value;
+            const name = document.getElementById('modalCustomerName').value.trim();
+            const phone = document.getElementById('modalCustomerPhone').value.trim();
+            const address = document.getElementById('modalCustomerAddress').value.trim();
+
+            triggerMailtoRegistration(pkg, name, phone, address);
+            closeRegisterModal();
+            document.getElementById('modalRegisterForm').reset();
+        }
+
+        // Xử lý submit từ form nhanh trên Banner
+        function handleQuickBannerSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('bannerName').value.trim();
+            const phone = document.getElementById('bannerPhone').value.trim();
+            const address = document.getElementById('bannerAddress').value.trim();
+            const service = document.getElementById('bannerService').value;
+
+            triggerMailtoRegistration(service, name, phone, address);
+            e.target.reset();
+        }
+
+        // Đóng modal khi click vùng tối bên ngoài
+        window.addEventListener('click', function(e) {
+            const modal = document.getElementById('registerModal');
+            if (e.target === modal) {
+                closeRegisterModal();
+            }
+        });
+
+        // Khởi tạo dữ liệu khi tải trang
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPricing();
+        });
+    </script>
+</body>
+</html>
